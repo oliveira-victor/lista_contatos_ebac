@@ -29,6 +29,15 @@ export const UserInfo = styled.span`
     font-weight: bold;
 `
 
+export const TypeField = styled.textarea`
+    display: block;
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    resize: none;
+    border: none;
+`
+
 export const EditCardBtn = styled.button`
     width: 100%;
     background-color: ${variables.mainColor};
@@ -40,4 +49,15 @@ export const EditCardBtn = styled.button`
     border-radius: 6px;
     text-transform: uppercase;
     cursor: pointer;
+`
+
+export const EditingBtnsContainer = styled.div`
+    display: flex;
+    gap: 6px;
+    justify-content: space-between;
+`
+
+export const IsEditingBtn = styled(EditCardBtn)`
+    width: 48%;
+    font-weight: bold;
 `

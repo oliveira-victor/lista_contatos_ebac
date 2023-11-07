@@ -1,17 +1,35 @@
+import { useState } from 'react'
 import * as S from './styles'
 
-const Card = () => {
+type Props = {
+    name: string
+    email: string
+    phone: number
+}
+
+const Card = ({ name, email, phone }: Props) => {
+
+    const [isEditing, setIsEditing] = useState(false)
+
     return (
         <S.CardContainer>
             <S.CardTitle>
-                <h2>John Doe</h2>
+                <h2>{name}</h2>
                 <span>X</span>
             </S.CardTitle>
             <S.UserInfo>E-mail</S.UserInfo>
-            <p>johndoe@gmail.com</p>
+            <S.TypeField value={email} />
             <S.UserInfo>Telefone</S.UserInfo>
-            <p>82 9 9876-5432</p>
-            <S.EditCardBtn>Editar</S.EditCardBtn>
+            <S.TypeField value={phone} />
+            {isEditing ? (
+                <S.EditingBtnsContainer>
+                    <S.IsEditingBtn style={{ backgroundColor: '#32b338' }}>Salvar</S.IsEditingBtn>
+                    <S.IsEditingBtn style={{ backgroundColor: '#e83838' }} onClick={() => setIsEditing(false)}>Cancelar</S.IsEditingBtn>
+                </S.EditingBtnsContainer>
+            ) : (
+                <S.EditCardBtn onClick={() => setIsEditing(true)}>Editar</S.EditCardBtn>
+            )}
+
         </S.CardContainer>
     )
 }

@@ -1,17 +1,20 @@
-import CardsDisplay from './containers/CardsDisplay/CardsDisplay'
+import { Provider } from 'react-redux'
+import CardsDisplay from './containers/CardsDisplay'
 import MainToolbar from './containers/MainToolbar'
 import GlobalStyle, { Container } from './styles'
+
+import store from './store'
 
 function App() {
 
   return (
-    <div>
+    <Provider store={store}>
       <GlobalStyle />
       <Container>
         <MainToolbar />
         <CardsDisplay />
       </Container>
-    </div>
+    </Provider>
   )
 }
 
