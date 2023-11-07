@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import variables from "./variables";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -6,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Titillium Web', sans-serif;
+    }
+
+    body {
+        background-color: ${variables.mainColor};
     }
 `
 

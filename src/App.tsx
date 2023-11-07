@@ -1,3 +1,5 @@
+import CardsDisplay from './containers/CardsDisplay/CardsDisplay'
+import MainToolbar from './containers/MainToolbar'
 import GlobalStyle, { Container } from './styles'
 
 function App() {
@@ -6,7 +8,8 @@ function App() {
     <div>
       <GlobalStyle />
       <Container>
-        <h1>Hello World</h1>
+        <MainToolbar />
+        <CardsDisplay />
       </Container>
     </div>
   )
