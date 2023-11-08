@@ -1,9 +1,35 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { useDispatch } from 'react-redux'
+
 import * as S from './styles'
+import Contato from '../../models/Contato'
+import { addContact } from '../../store/reducers/contatos'
 
 const MainToolbar = () => {
 
+    const dispatch = useDispatch()
+
     const [isAddingContact, setIsAddingContact] = useState(false)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState(0)
+
+    const submitNewContact = (event: FormEvent) => {
+        event.preventDefault()
+        /* const contactToBeAdded = new Contato(
+            name,
+            email,
+            phone,
+            1
+        ) */
+
+        dispatch(addContact({
+            name,
+            email,
+            phone
+        })
+        )
+    }
 
     return (
         <S.MenuContainer>
@@ -15,11 +41,11 @@ const MainToolbar = () => {
             </S.upperPart>
             {isAddingContact ?
                 (
-                    <form>
-                        <S.addContactInput type="text" placeholder='Contact name' />
-                        <S.addContactInput type="text" placeholder='E-mail' />
-                        <S.addContactInput type="text" placeholder='Phone number' />
-                        <S.NewContactBtn>Adicionar contato</S.NewContactBtn>
+                    <form onSubmit={submitNewContact}>
+                        <S.addContactInput value={name} onChange={event => setName(event.target.value)} type="text" placeholder='Contact name' />
+                        <S.addContactInput value={email} onChange={event => setEmail(event.target.value)} type="text" placeholder='E-mail' />
+                        <S.addContactInput value={phone} onChange={event => setPhone(parseFloat(event.target.value))} type="number" placeholder='Phone number' />
+                        <S.NewContactBtn type='submit'>Adicionar contato</S.NewContactBtn>
                     </form>
                 ) : ''
             }
