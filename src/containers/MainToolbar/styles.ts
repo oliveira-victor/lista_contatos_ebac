@@ -4,8 +4,6 @@ import variables from "../../styles/variables";
 export const MenuContainer = styled.menu`
     margin-top: 20px;
     background-color: #fff;
-    display: flex;
-    justify-content: space-between;
     padding: 20px 30px;
     align-items: center;
     border-radius: 20px;
@@ -16,14 +14,35 @@ export const MenuContainer = styled.menu`
     }
 `
 
+export const upperPart = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+export const addContactInput = styled.input`
+    padding: 6px;
+    width: 200px;
+    margin-right: 10px;
+    border: none;
+    border-bottom: 2px solid ${variables.mainColor};
+    font-size: 16px;
+
+    &:focus {
+        outline: none;
+    }
+`
+
 export const AddBtn = styled.button`
-cursor: pointer;
+    cursor: pointer;
     background-color: ${variables.mainColor};
     color: #fff;
-    width: 40px;
-    height: 40px;
     border: none;
+    padding: 10px 16px;
     border-radius: 10px;
-    font-size: 30px;
     font-weight: bold;
+    font-size: 16px;
+`
+
+export const NewContactBtn = styled(AddBtn)`
+    background-color: ${variables.green};
 `
