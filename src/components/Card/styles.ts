@@ -21,6 +21,7 @@ export const CardTitle = styled.div`
 
     span {
         font-size: 26px;
+        cursor: pointer;
     }
 `
 

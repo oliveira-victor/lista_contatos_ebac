@@ -1,21 +1,23 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
 import * as S from './styles'
 
-type Props = {
-    name: string
-    email: string
-    phone: number
-}
+import { remove } from '../../store/reducers/contatos'
+import ContatoClass from '../../models/Contato'
 
-const Card = ({ name, email, phone }: Props) => {
+type Props = ContatoClass
 
+const Card = ({ contactName, email, phone, id }: Props) => {
+
+    const dispatch = useDispatch()
     const [isEditing, setIsEditing] = useState(false)
 
     return (
         <S.CardContainer>
             <S.CardTitle>
-                <h2>{name}</h2>
-                <span>X</span>
+                <h2>{contactName}</h2>
+                <span onClick={() => dispatch(remove(id))}>X</span>
             </S.CardTitle>
             <S.UserInfo>E-mail</S.UserInfo>
             <S.TypeField value={email} />
