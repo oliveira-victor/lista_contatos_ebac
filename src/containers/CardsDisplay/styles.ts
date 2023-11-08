@@ -11,3 +11,11 @@ export const MainCardsContainer = styled.main`
         gap: 20px;
     }
 `
+
+export const emptyListMsg = styled.span`
+    font-size: 24px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    margin-top: 60px;
+`

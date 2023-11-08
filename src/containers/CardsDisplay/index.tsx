@@ -10,6 +10,7 @@ const CardsDisplay = () => {
 
     return (
         <S.MainCardsContainer>
+            {items.length === 0 ? <S.emptyListMsg>Sua lista de contatos está vazia.</S.emptyListMsg> : ''}
             <ul>
                 {items.map((c) => (
                     <li key={c.phone}>
