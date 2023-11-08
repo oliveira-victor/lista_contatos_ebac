@@ -30,7 +30,7 @@ export const UserInfo = styled.span`
     font-weight: bold;
 `
 
-export const TypeField = styled.textarea`
+export const TypeField = styled.input`
     display: block;
     width: 100%;
     height: 30px;

@@ -8,11 +8,12 @@ import ContatoClass from '../../models/Contato'
 
 type Props = ContatoClass
 
-const Card = ({ contactName, email: originalEmail, phone, id }: Props) => {
+const Card = ({ contactName, email: originalEmail, phone: originalPhone, id }: Props) => {
 
     const dispatch = useDispatch()
     const [isEditing, setIsEditing] = useState(false)
     const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState(0)
 
     useEffect(() => {
         if (originalEmail.length > 0) {
@@ -20,9 +21,16 @@ const Card = ({ contactName, email: originalEmail, phone, id }: Props) => {
         }
     }, [originalEmail])
 
+    useEffect(() => {
+        if (originalPhone > 0) {
+            setPhone(originalPhone)
+        }
+    }, [originalPhone])
+
     function cancelEditing() {
         setIsEditing(false)
         setEmail(originalEmail)
+        setPhone(originalPhone)
     }
 
     return (
@@ -32,9 +40,9 @@ const Card = ({ contactName, email: originalEmail, phone, id }: Props) => {
                 <span onClick={() => dispatch(remove(id))}>X</span>
             </S.CardTitle>
             <S.UserInfo>E-mail</S.UserInfo>
-            <S.TypeField disabled={!isEditing} value={email} onChange={event => setEmail(event.target.value)} />
+            <S.TypeField type='string' disabled={!isEditing} value={email} onChange={event => setEmail(event.target.value)} />
             <S.UserInfo>Telefone</S.UserInfo>
-            <S.TypeField value={phone} />
+            <S.TypeField type='number' disabled={!isEditing} value={phone} onChange={event => setPhone(parseFloat(event.target.value))} />
             {isEditing ? (
                 <S.EditingBtnsContainer>
                     <S.IsEditingBtn style={{ backgroundColor: '#32b338' }} onClick={() => {
