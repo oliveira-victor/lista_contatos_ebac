@@ -37,6 +37,7 @@ export const TypeField = styled.textarea`
     font-size: 16px;
     resize: none;
     border: none;
+    background-color: transparent;
 `
 
 export const EditCardBtn = styled.button`
