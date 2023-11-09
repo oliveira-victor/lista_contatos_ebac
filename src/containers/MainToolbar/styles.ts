@@ -12,6 +12,16 @@ export const MenuContainer = styled.menu`
     h1 {
         color: ${variables.mainColor};
     }
+
+    @media (max-width: 767px) {
+        width: 94%;
+        margin: 0 auto;
+
+        form {
+            margin-top: 30px;
+            text-align: center;
+        }
+    }
 `
 
 export const upperPart = styled.div`
@@ -29,6 +39,10 @@ export const addContactInput = styled.input`
 
     &:focus {
         outline: none;
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 10px;
     }
 `
 

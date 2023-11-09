@@ -42,7 +42,7 @@ const MainToolbar = () => {
             {isAddingContact ?
                 (
                     <form onSubmit={submitNewContact}>
-                        <S.addContactInput value={name} onChange={event => setName(event.target.value)} type="text" placeholder='Contact name' />
+                        <S.addContactInput value={name} onChange={event => setName(event.target.value)} type="text" placeholder='Nome do contato' />
                         <S.addContactInput value={email} onChange={event => setEmail(event.target.value)} type="text" placeholder='E-mail' />
                         <S.addContactInput value={phone} onChange={event => setPhone(parseFloat(event.target.value))} type="number" placeholder='Phone number' />
                         <S.NewContactBtn type='submit'>Adicionar contato</S.NewContactBtn>

@@ -4,6 +4,7 @@ import MainToolbar from './containers/MainToolbar'
 import GlobalStyle, { Container } from './styles'
 
 import store from './store'
+import Footer from './containers/Footer'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <MainToolbar />
         <CardsDisplay />
       </Container>
+      <Footer />
     </Provider>
   )
 }

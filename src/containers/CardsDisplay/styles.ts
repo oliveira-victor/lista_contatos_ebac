@@ -9,6 +9,10 @@ export const MainCardsContainer = styled.main`
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
+
+        @media (max-width: 767px) {
+            display: block;
+        }
     }
 `
 

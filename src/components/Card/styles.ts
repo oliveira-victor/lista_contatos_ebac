@@ -10,6 +10,7 @@ export const CardContainer = styled.div`
 
     @media (max-width: 767px) {
         margin: 0 auto;
+        margin-bottom: 20px;
     }
 `
 
