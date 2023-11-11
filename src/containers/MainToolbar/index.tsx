@@ -17,7 +17,7 @@ const MainToolbar = () => {
     const submitNewContact = (event: FormEvent) => {
         event.preventDefault()
 
-        if (name !== '' && email !== '' && !Number.isNaN(phone)) {
+        if (name !== '' && email !== '' && phone !== '') {
             const contactToBeAdded = new Contato(
                 name,
                 email,
