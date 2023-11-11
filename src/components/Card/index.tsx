@@ -8,12 +8,12 @@ import ContatoClass from '../../models/Contato'
 
 type Props = ContatoClass
 
-const Card = ({ contactName, email: originalEmail, phone: originalPhone, id }: Props) => {
+const Card = ({ name, email: originalEmail, phone: originalPhone, id }: Props) => {
 
     const dispatch = useDispatch()
     const [isEditing, setIsEditing] = useState(false)
     const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState(0)
+    const [phone, setPhone] = useState('')
 
     useEffect(() => {
         if (originalEmail.length > 0) {
@@ -22,7 +22,7 @@ const Card = ({ contactName, email: originalEmail, phone: originalPhone, id }: P
     }, [originalEmail])
 
     useEffect(() => {
-        if (originalPhone > 0) {
+        if (originalPhone.length > 0) {
             setPhone(originalPhone)
         }
     }, [originalPhone])
@@ -36,19 +36,19 @@ const Card = ({ contactName, email: originalEmail, phone: originalPhone, id }: P
     return (
         <S.CardContainer>
             <S.CardTitle>
-                <h2>{contactName}</h2>
+                <h2>{name}</h2>
                 <span onClick={() => dispatch(remove(id))}>X</span>
             </S.CardTitle>
             <S.UserInfo>E-mail</S.UserInfo>
             <S.TypeField type='string' disabled={!isEditing} value={email} onChange={event => setEmail(event.target.value)} />
             <S.UserInfo>Telefone</S.UserInfo>
-            <S.TypeField type='number' disabled={!isEditing} value={phone} onChange={event => setPhone(parseFloat(event.target.value))} />
+            <S.TypeField type='number' disabled={!isEditing} value={phone} onChange={event => setPhone(event.target.value)} />
             {isEditing ? (
                 <S.EditingBtnsContainer>
                     <S.IsEditingBtn style={{ backgroundColor: '#32b338' }} onClick={() => {
                         dispatch(
                             edit({
-                                contactName,
+                                name,
                                 email,
                                 phone,
                                 id

@@ -14,7 +14,7 @@ const CardsDisplay = () => {
             <ul>
                 {items.map((c) => (
                     <li key={c.phone}>
-                        <Card id={c.id} contactName={c.contactName} email={c.email} phone={c.phone} />
+                        <Card id={c.id} name={c.name} email={c.email} phone={c.phone} />
                     </li>
                 ))}
             </ul>

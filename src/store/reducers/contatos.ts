@@ -9,21 +9,21 @@ const initialState: ContatosState = {
     items: [
         {
             id: 1,
-            contactName: 'Victor Freire',
+            name: 'Victor Freire',
             email: 'victorfreire@email.com',
-            phone: 998765432
+            phone: '998765432'
         },
         {
             id: 2,
-            contactName: 'Yoana Dimitrova',
+            name: 'Yoana Dimitrova',
             email: 'yoanadimitrova@email.com',
-            phone: 976543210
+            phone: '976543210'
         },
         {
             id: 3,
-            contactName: 'Isabella Oliveira',
+            name: 'Isabella Oliveira',
             email: 'isadimitrova@email.com',
-            phone: 965432109
+            phone: '965432109'
         }
     ]
 }
@@ -43,7 +43,7 @@ const contatosSlice = createSlice({
             }
         },
         addContact: (state, action: PayloadAction<Omit<Contato, 'id'>>) => {
-            const contactExists = state.items.find((contato) => contato.contactName.toLowerCase() === action.payload.contactName.toLowerCase())
+            const contactExists = state.items.find((contato) => contato.name.toLowerCase() === action.payload.name.toLowerCase())
 
             if (contactExists) {
                 alert("Já existe contato com esse nome")

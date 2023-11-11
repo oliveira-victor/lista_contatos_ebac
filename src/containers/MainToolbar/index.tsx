@@ -2,7 +2,6 @@ import { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
-import Contato from '../../models/Contato'
 import { addContact } from '../../store/reducers/contatos'
 
 const MainToolbar = () => {
@@ -18,16 +17,21 @@ const MainToolbar = () => {
         event.preventDefault()
 
         if (name !== '' && email !== '' && phone !== '') {
-            const contactToBeAdded = new Contato(
+            /* const contactToBeAdded = new Contato(
                 name,
                 email,
                 phone,
                 1
+            ) */
+
+            dispatch(
+                addContact({
+                    name,
+                    email,
+                    phone
+                })
             )
-    
-            dispatch(addContact(contactToBeAdded)
-            )
-    
+
             setName('')
             setEmail('')
             setPhone('')
@@ -35,7 +39,7 @@ const MainToolbar = () => {
             alert('Por favor, preencha todos os campos.')
         }
 
-        
+
     }
 
     return (
