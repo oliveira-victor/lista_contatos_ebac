@@ -12,8 +12,15 @@ const Card = ({ name, email: originalEmail, phone: originalPhone, id }: Props) =
 
     const dispatch = useDispatch()
     const [isEditing, setIsEditing] = useState(false)
+    const [nameInput, setNameInput] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+
+    useEffect(() => {
+        if (name.length > 0) {
+            setNameInput(name)
+        }
+    }, [name])
 
     useEffect(() => {
         if (originalEmail.length > 0) {
@@ -29,6 +36,7 @@ const Card = ({ name, email: originalEmail, phone: originalPhone, id }: Props) =
 
     function cancelEditing() {
         setIsEditing(false)
+        setNameInput(name)
         setEmail(originalEmail)
         setPhone(originalPhone)
     }
@@ -36,7 +44,7 @@ const Card = ({ name, email: originalEmail, phone: originalPhone, id }: Props) =
     return (
         <S.CardContainer>
             <S.CardTitle>
-                <h2>{name}</h2>
+                <S.NameTypeField type='string' disabled={!isEditing} value={nameInput} onChange={event => setNameInput(event.target.value)} />
                 <span onClick={() => dispatch(remove(id))}>X</span>
             </S.CardTitle>
             <S.UserInfo>E-mail</S.UserInfo>

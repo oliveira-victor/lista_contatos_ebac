@@ -41,6 +41,11 @@ export const TypeField = styled.input`
     background-color: transparent;
 `
 
+export const NameTypeField = styled(TypeField)`
+    font-size: 24px;
+    font-weight: bold;
+`
+
 export const EditCardBtn = styled.button`
     width: 100%;
     background-color: ${variables.mainColor};
