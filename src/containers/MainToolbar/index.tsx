@@ -12,23 +12,30 @@ const MainToolbar = () => {
     const [isAddingContact, setIsAddingContact] = useState(false)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState(0)
+    const [phone, setPhone] = useState('')
 
     const submitNewContact = (event: FormEvent) => {
         event.preventDefault()
-        /* const contactToBeAdded = new Contato(
-            name,
-            email,
-            phone,
-            1
-        ) */
 
-        dispatch(addContact({
-            name,
-            email,
-            phone
-        })
-        )
+        if (name !== '' && email !== '' && !Number.isNaN(phone)) {
+            const contactToBeAdded = new Contato(
+                name,
+                email,
+                phone,
+                1
+            )
+    
+            dispatch(addContact(contactToBeAdded)
+            )
+    
+            setName('')
+            setEmail('')
+            setPhone('')
+        } else {
+            alert('Por favor, preencha todos os campos.')
+        }
+
+        
     }
 
     return (
@@ -44,7 +51,7 @@ const MainToolbar = () => {
                     <form onSubmit={submitNewContact}>
                         <S.addContactInput value={name} onChange={event => setName(event.target.value)} type="text" placeholder='Nome do contato' />
                         <S.addContactInput value={email} onChange={event => setEmail(event.target.value)} type="text" placeholder='E-mail' />
-                        <S.addContactInput value={phone} onChange={event => setPhone(parseFloat(event.target.value))} type="number" placeholder='Phone number' />
+                        <S.addContactInput value={phone} onChange={event => setPhone(event.target.value)} type="number" placeholder='Phone number' />
                         <S.NewContactBtn type='submit'>Adicionar contato</S.NewContactBtn>
                     </form>
                 ) : ''
